@@ -24,5 +24,6 @@ export default new Router({
       path: '/seller',
       component: goods
     },
-  ]
+  ],
+  linkActiveClass: 'active'
 })
