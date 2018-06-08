@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <myHeader></myHeader>
+    <myHeader :poiInfo='poiInfo'></myHeader>
     <myNav></myNav>
     <router-view/>
   </div>
@@ -15,6 +15,24 @@ export default {
   components: {
     myHeader,
     myNav,
+  },
+  data () {
+    return {
+      poiInfo: {},
+    }
+  },
+  created () {
+    let vm = this
+    this.$axios.get('/api/goods')
+        .then(function(res){
+          let dataSource = res.data
+          if(dataSource.code == 0){
+            vm.poiInfo = dataSource.data.poi_info
+          }
+        })
+        .catch(function(err){
+          console.log(err)
+        })
   }
 }
 </script>
