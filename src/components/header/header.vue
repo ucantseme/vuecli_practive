@@ -130,7 +130,6 @@ $color_white: white;
 	margin: 6px 15px 0 21px;
 	display: flex;
 	justify-content: space-between;
-	box-sizing: border-box;
 	.top-back{
 		@include size(50px,100%);
 		text-align: center;
@@ -188,9 +187,8 @@ $color_white: white;
 	}
 }
 .content{
+	@include size(calc(100% - 20px),50px);
 	margin: 17px 10px 11px;
-	@include size(100%,50px);
-	box-sizing: border-box;
 	display: flex;
 	.icon{
 		@include size(50px);
@@ -222,7 +220,7 @@ $color_white: white;
 	}
 }
 .bulletin{
-	margin: 0 10px;
+	padding: 0 10px;
 	height: 16px;
 	font-size: 11px;
 	color: $color_white;
