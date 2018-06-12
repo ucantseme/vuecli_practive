@@ -46,22 +46,28 @@
 				</li>
 			</ul>
 		</div>
+		<shopcart :shipping_fee_tip="poiInfo.shipping_fee_tip" :min_price_tip="poiInfo.min_price_tip"></shopcart>
 	</div>
 </template>
 
 <script>
 import BScroll from 'better-scroll'
+import shopcart from '@/components/cart/cart'
 export default {
   data() {
     return {
       operation: {},
 			goods: {},
+			poiInfo: {},
 			listH: [],
 			scrollY: 0,
 			menuScroll: {},
 			foodScroll: {},
     };
-  },
+	},
+	components: {
+		shopcart,
+	},
   created() {
     let vm = this;
     this.$axios
@@ -71,6 +77,7 @@ export default {
         if (dataSource.code == 0) {
           vm.operation = dataSource.data.container_operation_source;
 					vm.goods = dataSource.data.food_spu_tags;
+					vm.poiInfo = dataSource.data.poi_info;
 					vm.$nextTick(()=>{
 						vm.scroll();
 						vm.calcH();						
